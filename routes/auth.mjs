@@ -7,14 +7,14 @@ const router = express.Router();
  * @swagger
  * tags:
  *   name: Autenticación
- *   description: Endpoint para la autenticación de usuarios.
+ *   description: Endpoint para login y obtención de token JWT.
  */
 
 /**
  * @swagger
  * /api/auth/login:
  *   post:
- *     summary: Inicia sesión y obtiene un token JWT.
+ *     summary: Autentica un usuario y devuelve un token JWT.
  *     tags: [Autenticación]
  *     requestBody:
  *       required: true

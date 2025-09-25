@@ -1,4 +1,5 @@
 import Pelicula from '../models/Pelicula.mjs';
+import Cine from '../models/Cine.mjs'; // Importar el modelo Cine
 
 async function findAll(req, res) {
     try {
@@ -28,6 +29,14 @@ async function save(req, res) {
     try {
         const pelicula = new Pelicula(req.body);
         const result = await pelicula.save();
+
+        // Sincronizar la relación con el Cine
+        const cine = await Cine.findById(result.cineId);
+        if (cine) {
+            cine.peliculas.push(result._id);
+            await cine.save();
+        }
+
         res.status(201).json({ "state": true, "data": result });
     } catch (error) {
         console.error(error);
@@ -56,6 +65,16 @@ async function remove(req, res) {
         if (!result) {
             return res.status(404).json({ "state": false, "error": "Pelicula not found" });
         }
+
+        // Opcional: Quitar la película del array de películas del cine
+        if (result.cineId) {
+            const cine = await Cine.findById(result.cineId);
+            if (cine) {
+                cine.peliculas = cine.peliculas.filter(peliculaId => peliculaId.toString() !== id);
+                await cine.save();
+            }
+        }
+
         res.status(200).json({ "state": true, "data": result });
     } catch (error) {
         console.error(error);

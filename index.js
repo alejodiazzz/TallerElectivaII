@@ -3,6 +3,7 @@ import connectDB from './drivers/connect-db.mjs';
 import cineRoutes from './routes/cine.mjs';
 import peliculaRoutes from './routes/pelicula.mjs';
 import authRoutes from './routes/auth.mjs';
+import usuarioRoutes from './routes/usuario.mjs'; // Importar rutas de usuario
 import dotenv from 'dotenv';
 
 // Swagger
@@ -30,6 +31,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/api/cines', cineRoutes);
 app.use('/api/peliculas', peliculaRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/usuarios', usuarioRoutes); // Usar rutas de usuario
 
 // servidor
 app.listen(app.get('PORT'), () => {
