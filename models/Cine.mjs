@@ -14,7 +14,11 @@ const CineSchema = new Schema({
     capacidad: {
         type: Number,
         required: true
-    }
+    },
+    peliculas: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Pelicula'
+    }]
 });
 
 export default mongoose.model('Cine', CineSchema);

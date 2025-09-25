@@ -2,7 +2,13 @@ import express from 'express';
 import connectDB from './drivers/connect-db.mjs';
 import cineRoutes from './routes/cine.mjs';
 import peliculaRoutes from './routes/pelicula.mjs';
+import authRoutes from './routes/auth.mjs';
 import dotenv from 'dotenv';
+
+// Swagger
+import swaggerUi from 'swagger-ui-express';
+import swaggerJsDoc from 'swagger-jsdoc';
+import swaggerOptions from './swagger-config.mjs';
 
 dotenv.config();
 
@@ -16,11 +22,16 @@ app.use(express.json());
 // Connect database
 connectDB();
 
-// Routes
-app.use('/cines', cineRoutes);
-app.use('/peliculas', peliculaRoutes);
+// Swagger Docs
+const swaggerSpec = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-// Start the server
+// Routes
+app.use('/api/cines', cineRoutes);
+app.use('/api/peliculas', peliculaRoutes);
+app.use('/api/auth', authRoutes);
+
+// servidor
 app.listen(app.get('PORT'), () => {
   console.log(`Server listening on port ${app.get('PORT')}`);
 });
