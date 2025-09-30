@@ -2,21 +2,23 @@ Diagramas
 
 Casos de uso:
 ```mermaid
-usecaseDiagram
-actor Cliente
-actor Usuario as U
-actor Administrador as A
+flowchart TB
+    subgraph Actores
+        A1[Usuario no autenticado]
+        A2[Usuario autenticado]
+    end
 
-Cliente --> (Consultar productos)
-Cliente --> (Filtrar producto por ID)
+    subgraph Sistema
+        UC1((Consultar lista de productos))
+        UC2((Consultar producto por ID))
+        UC3((Iniciar sesión))
+        UC4((Actualizar inventario))
+    end
 
-U --> (Iniciar sesión)
-U --> (Gestionar inventario)
+    A1 --> UC1
+    A1 --> UC2
+    A2 --> UC3
+    A2 --> UC4
+    UC4 --> UC3
 
-(Iniciar sesión) .> (Validar credenciales) : include
-(Gestionar inventario) .> (Entrada de producto) : include
-(Gestionar inventario) .> (Salida de producto) : include
-
-(Entrada de producto) .> (Actualizar stock) : include
-(Salida de producto) .> (Validar stock mínimo) : include
 
