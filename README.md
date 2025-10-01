@@ -22,3 +22,33 @@ flowchart TB
     UC4 --> UC3
 
 
+---
+
+De Componentes  :
+
+```markdown
+```mermaid
+flowchart TB
+    subgraph Cliente
+        C1[Cliente API (Postman / App Web)]
+    end
+
+    subgraph Servidor
+        S1[index.js (Servidor Express)]
+        S2[routes/index.mjs (Router)]
+        S3[Middleware de Autenticación]
+        S4[Controladores de Ruta]
+    end
+
+    subgraph FuenteDeDatos
+        DB[(data.mjs - Usuarios y Productos)]
+    end
+
+    C1 --> S1
+    S1 --> S2
+    S2 --> S3
+    S2 --> S4
+    S3 --> S4
+    S4 --> DB
+
+
