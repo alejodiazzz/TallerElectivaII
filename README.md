@@ -28,18 +28,18 @@ flowchart TB
 ```mermaid
 flowchart TB
     subgraph Cliente
-        C1[Cliente API (Postman / App Web)]
+        C1[Cliente API: Postman / App Web]
     end
 
     subgraph Servidor
-        S1[index.js (Servidor Express)]
-        S2[routes/index.mjs (Router)]
+        S1[index.js - Servidor Express]
+        S2[routes/index.mjs - Router]
         S3[Middleware de Autenticación]
         S4[Controladores de Ruta]
     end
 
     subgraph FuenteDeDatos
-        DB[(data.mjs - Usuarios y Productos)]
+        DB[(data.mjs: Usuarios y Productos)]
     end
 
     C1 --> S1
@@ -48,6 +48,7 @@ flowchart TB
     S2 --> S4
     S3 --> S4
     S4 --> DB
+
 ```
 
 ---
