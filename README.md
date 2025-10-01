@@ -24,7 +24,7 @@ flowchart TB
 
 ---
 
-De Componentes  :
+##De Componentes  :
 
 ```markdown
 ```mermaid
