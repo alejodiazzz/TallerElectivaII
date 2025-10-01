@@ -1,6 +1,6 @@
-Diagramas
+# Diagramas
 
-Casos de uso:
+## 1️⃣ Casos de Uso
 ```mermaid
 flowchart TB
     subgraph Actores
@@ -20,13 +20,11 @@ flowchart TB
     A2 --> UC3
     A2 --> UC4
     UC4 --> UC3
-
-
+```
 
 ---
 
-## 2️⃣ Componentes  
-```markdown
+## 2️⃣ Componentes
 ```mermaid
 flowchart TB
     subgraph Cliente
@@ -50,8 +48,32 @@ flowchart TB
     S2 --> S4
     S3 --> S4
     S4 --> DB
+```
 
-  
-    S4 --> DB
+---
+
+## 3️⃣ Secuencia
+```mermaid
+sequenceDiagram
+    participant Cliente
+    participant Servidor as Servidor Express
+    participant Router
+    participant Auth as Middleware Auth
+    participant Controlador
+    participant DB as Fuente de Datos
+
+    Cliente->>Servidor: PATCH /productos/1/inventario
+    Servidor->>Router: Pasa petición
+    Router->>Auth: Validar token
+    Auth->>Auth: verify(token)
+    Auth-->>Router: next()
+    Router->>Controlador: Lógica de actualización
+    Controlador->>DB: find({id:1})
+    DB-->>Controlador: Producto encontrado
+    Controlador->>Controlador: Verifica stock y tipo
+    Controlador->>DB: update({cantidad: nuevaCantidad})
+    Controlador-->>Servidor: JSON con producto actualizado
+    Servidor-->>Cliente: 200 OK
+```
 
 
