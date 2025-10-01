@@ -22,10 +22,10 @@ flowchart TB
     UC4 --> UC3
 
 
+
 ---
 
-##De Componentes  :
-
+## 2️⃣ Componentes  
 ```markdown
 ```mermaid
 flowchart TB
@@ -49,6 +49,9 @@ flowchart TB
     S2 --> S3
     S2 --> S4
     S3 --> S4
+    S4 --> DB
+
+  
     S4 --> DB
 
 
