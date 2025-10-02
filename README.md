@@ -33,15 +33,15 @@ classDiagram
 ```mermaid
 flowchart TB
     subgraph Cliente
-        C1["Cliente (Navegador / API Client)"]
+        C1["Cliente: Navegador / API Client"]
     end
 
-    subgraph CineApp [CineApp (Node.js)]
-        S1["Servidor Web (Express.js)"]
+    subgraph CineApp_Node [CineApp - Node.js]
+        S1["Servidor Web - Express.js"]
         S2["Router (routes)"]
         S3["Middleware (auth)"]
         S4["Controladores"]
-        S5["Modelos (Mongoose)"]
+        S5["Modelos - Mongoose"]
     end
 
     subgraph BaseDeDatos
@@ -56,3 +56,4 @@ flowchart TB
     S4 --> S5
     S5 --> DB
 ```
+
