@@ -1,3 +1,5 @@
+## 1️⃣ Diagrama de Clases  
+
 ```mermaid
 classDiagram
     class Usuario {
@@ -23,15 +25,6 @@ classDiagram
 
     Cine "1" --> "0..*" Pelicula : contiene
 
-
----
-
-## 2️⃣ Diagrama de Componentes  
-
-⚠️ Nota: Mermaid **no tiene un tipo nativo `componentDiagram`**, pero podemos representarlo con **`flowchart TB`** o con **paquetes + componentes simulados**. Aquí te dejo una versión compatible con GitHub:
-
-```markdown
-```mermaid
 flowchart TB
     subgraph Cliente
         C1["Cliente (Navegador / API Client)"]
@@ -56,4 +49,3 @@ flowchart TB
     S3 --> S4
     S4 --> S5
     S5 --> DB
-mermaid
