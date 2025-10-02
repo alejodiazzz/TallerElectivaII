@@ -24,7 +24,13 @@ classDiagram
     }
 
     Cine "1" --> "0..*" Pelicula : contiene
+```
 
+---
+
+## 2️⃣ Diagrama de Componentes  
+
+```mermaid
 flowchart TB
     subgraph Cliente
         C1["Cliente (Navegador / API Client)"]
@@ -49,3 +55,4 @@ flowchart TB
     S3 --> S4
     S4 --> S5
     S5 --> DB
+```
