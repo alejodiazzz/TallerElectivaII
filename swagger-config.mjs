@@ -8,7 +8,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:6972',
+        url: process.env.BACKEND_URL || 'http://localhost:6972',
         description: 'Servidor de Desarrollo'
       },
     ],
