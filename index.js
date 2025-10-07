@@ -20,7 +20,10 @@ const app = express();
 app.set('PORT', process.env.PORT || 6972);
 
 // Middleware
+import cors from 'cors';
+
 app.use(express.json());
+app.use(cors());
 
 // Servir archivos estáticos desde la carpeta 'public'
 app.use(express.static('public'));
